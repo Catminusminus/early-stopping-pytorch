@@ -1,9 +1,20 @@
 import numpy as np
 import torch
+from typing import Callable, Any, Optional
+
 
 class EarlyStopping:
+    patience: int
+    verbose: bool
+    counter: int
+    best_score: Optional[float]
+    early_stop: bool
+    val_loss_min: float
+    delta: float
+    path: str
+
     """Early stops the training if validation loss doesn't improve after a given patience."""
-    def __init__(self, patience=7, verbose=False, delta=0, path='checkpoint.pt', trace_func=print):
+    def __init__(self, patience: int = 7, verbose: bool = False, delta: float = 0, path: str = 'checkpoint.pt', trace_func: Callable[[Any], Any] = print) -> None:
         """
         Args:
             patience (int): How long to wait after last time validation loss improved.
@@ -26,7 +37,8 @@ class EarlyStopping:
         self.delta = delta
         self.path = path
         self.trace_func = trace_func
-    def __call__(self, val_loss, model):
+
+    def __call__(self, val_loss: float, model: Any) -> None:
 
         score = -val_loss
 
@@ -43,7 +55,7 @@ class EarlyStopping:
             self.save_checkpoint(val_loss, model)
             self.counter = 0
 
-    def save_checkpoint(self, val_loss, model):
+    def save_checkpoint(self, val_loss: float, model: Any) -> None:
         '''Saves model when validation loss decrease.'''
         if self.verbose:
             self.trace_func(f'Validation loss decreased ({self.val_loss_min:.6f} --> {val_loss:.6f}).  Saving model ...')

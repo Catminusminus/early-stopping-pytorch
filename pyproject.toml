@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "early-stopping-pytorch"
+version = "0.1.0"
+description = ""
+authors = ["Catminusminus <resonafolma@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+torch = "^1.8.1"
+
+[tool.poetry.dev-dependencies]
+pysen = {version = "0.9.1", extras = ["lint"]}
+pysen-ls = ">=0.1.0"
+
+[tool.pysen]
+version = "0.9"
+
+[tool.pysen.lint]
+enable_black = true
+enable_flake8 = true
+enable_isort = true
+enable_mypy = true
+mypy_preset = "strict"
+line_length = 88
+py_version = "py38"
+[[tool.pysen.lint.mypy_targets]]
+  paths = ["./early-stopping-pytorch/"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
