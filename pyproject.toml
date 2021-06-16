@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "early-stopping-pytorch"
-version = "0.1.0"
-description = ""
-authors = ["Catminusminus <resonafolma@gmail.com>"]
+version = "0.0.0" # poetry-dynamic-versioning
+description = "Early stopping for PyTorch"
+authors = ["Catminusminus <getomya@svk.jp>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -12,6 +12,7 @@ torch = "^1.8.1"
 pysen = {version = "0.9.1", extras = ["lint"]}
 pysen-ls = ">=0.1.0"
 pytest = "^6.2.4"
+pytest-mock = "^3.6.1"
 
 [tool.pysen]
 version = "0.9"
@@ -25,7 +26,7 @@ mypy_preset = "strict"
 line_length = 88
 py_version = "py38"
 [[tool.pysen.lint.mypy_targets]]
-  paths = ["early_stopping_pytorch/", "tests/"]
+  paths = ["early_stopping_pytorch/"]
 
 [tool.pysen.lint.source]
   includes = ["early_stopping_pytorch/", "tests/"]
@@ -45,6 +46,10 @@ include_trailing_comma = true
 line_length = 88
 multi_line_output = 3
 use_parentheses = true
+
+[tool.poetry-dynamic-versioning]
+enable = true
+style = "pep440"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

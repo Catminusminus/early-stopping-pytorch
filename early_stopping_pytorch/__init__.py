@@ -1,2 +1,3 @@
-__version__ = "0.1.0"
-from early_stopping_pytorch import *
+from early_stopping_pytorch.early_stopping import EarlyStopping
+
+__all__ = ["EarlyStopping"]
